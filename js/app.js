@@ -9,12 +9,20 @@ let empDetails = [
 ];
 
 //1. Create a function name 'arrangeEmpDetails' to sort the employee details name wise by using 
-// arrays, functions and anonymous functions  
+// arrays, functions and anonymous functions 
 
 // Correct the function name as per test case requirement
-function arrangeEmpDetails1(data)
+function arrangeEmpDetails(data)
 {
-        // write your code here
+    return data.sort(empDetailFirst, empDetailSecond => {
+        if (empDetailFirst.name > empDetailSecond.name) {
+            return 1;
+        }
+        if (empDetailFirst.name < empDetailSecond.name) {
+            return -1;
+        }
+        return 0;
+    })
 }
 
 // let sortedemp = arrangeEmpDetails(empDetails)
@@ -27,7 +35,7 @@ function arrangeEmpDetails1(data)
 //    '2 ---- Karthik ---- 55000']
 
 const displayEmp = empDetails.map((emp)=>{
-    // write your code here
+    return `${emp.id} ---- ${emp.name} ---- ${emp.salary}`
 })
 
 // console.log(displayEmp);
@@ -52,9 +60,25 @@ const totalsal = empDetails
 let maxappraisalscore = empDetails.reduce((max,emp)=> emp.appraisal > max? emp.appraisal:max,0);
 
 // Correct the function name as per test case requirement
-function getAppraisalPct1(maxappraisalscore) 
+function getAppraisalPct(maxappraisalscore) 
 {
-    // write your code here
+    if (maxappraisalscore >= 100) {
+        return new Promise((resolve, reject) => {
+            resolve('20% hike to be given');
+        })
+    } else if (maxappraisalscore > 90 && maxappraisalscore < 100) {
+        return new Promise((resolve, reject) => {
+            resolve('10% hike to be given');
+        })
+    } else if (maxappraisalscore > 85 && maxappraisalscore <= 90) {
+        return new Promise((resolve, reject) => {
+            resolve('5% hike to be given');
+        })
+    } else {
+        return new Promise((resolve, reject) => {
+            resolve('Unfortunately, you are not eligible for a hike');
+        })
+    }
 }
 
 

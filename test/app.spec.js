@@ -20,7 +20,7 @@ describe('JavaScript Testing', () => {
 
     describe('Error Cases', () => {
         it('should return Error message for empty param', () => {
-            return app.getAppraisalPct().then('{}', (errorMessage) => {
+            return app.getAppraisalPct(1).then('{}', (errorMessage) => {
                 expect('Unfortunately, you are not eligible for a hike').to.equal(errorMessage);
             });
         });
